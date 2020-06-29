@@ -1,1 +1,1 @@
-Web front for health workers to issue credentials.
+Web front end for health workers to issue credentials.
