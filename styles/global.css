@@ -1,0 +1,50 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
+    Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  color: white;
+  line-height: 1.6;
+  font-size: 18px;
+  background-color: #00B2FF;
+  background-image: linear-gradient(to bottom right, rgb(128, 229, 255) ,rgb(0, 22, 221)); /* Standard syntax (must be last) */
+}
+
+* {
+  box-sizing: border-box;
+}
+
+h1{
+  color: white;
+}
+
+a {
+  color: #05386b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+img {
+  max-width: 100%;
+  display: block;
+}
+
+#nprogress .bar {
+  background: white !important;
+  height: 6px !important;
+}
+
+#nprogress .spinner-icon {
+  border-top-color: white !important;
+  border-left-color: white !important;
+}
+
+label {
+  color: white;
+}
+
+
