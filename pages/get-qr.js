@@ -5,7 +5,7 @@ import Cookie from "js-cookie";
 
 
 
-function Home({connectionID, QRCode}) {
+function Home({connectionID, QRCode, failed}) {
   Cookie.set("connectionID", connectionID);
   return (
     <div className="container">
@@ -15,20 +15,18 @@ function Home({connectionID, QRCode}) {
       </Head>
 
       <main>
-        <h2>Credential QR Code</h2>
-        <p>
-          Scan the QR code with guardian device.
-        </p>
+      {failed && <h2>Whoops, double check your connection.</h2> }
+      {!failed && <h2>Credential QR Code</h2> }
+      {!failed && <p>Scan the QR code with guardian device.</p>  }
         <br></br>
         
         <img src={QRCode}/>
 
         <div className="grid">
-        <Link href="/connected">
-            <div className="card">
-            <h3>Done</h3>
-            </div>
-          </Link>
+            
+        {!failed && <Link href="/connected"><div className="card"><h3>Done</h3></div></Link>}
+        {failed && <Link href="/get-qr"><div className="card"><h3>Retry</h3></div></Link>}
+          
 
           <Link href="/">
             <div className="cardCancel">
@@ -244,11 +242,16 @@ export async function getStaticProps() {
     return {
       props: {
         connectionID : json.connectionId,
-        QRCode : json.QRCode
+        QRCode : json.QRCode,
+        failed: false
       },
     }
   } catch (e){
-    console.log(e)
+    return {
+      props: {
+        failed: true
+      },
+    }
   }
 }
 

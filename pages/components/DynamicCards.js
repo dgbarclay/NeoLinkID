@@ -169,22 +169,7 @@ export default class DynamicCards extends React.Component{
         }
 
         .card {
-          margin: 0.2rem;
-          width: 60%;
-          flex-basis: 45%;
-          padding: 1rem;
-          text-align: center;
-          color: black;
-          text-decoration: none;
-          border: 1px solid #eaeaea;
-          border-radius: 10px;
-          transition: color 0.15s ease, border-color 0.15s ease;
-          background-color: white;
-        }
-
-        .cardFinish {
-          margin: 3rem;
-          width: 60%;
+          margin: 0.1rem;
           flex-basis: 45%;
           padding: 1rem;
           text-align: center;
@@ -193,7 +178,9 @@ export default class DynamicCards extends React.Component{
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
-          }
+          background-color: white;
+          color: black;
+        }
 
         .card:hover,
         .card:focus,
