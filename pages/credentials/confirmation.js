@@ -37,7 +37,7 @@ class Confirmation extends Component {
         };
         console.log(requestOptions);
         
-        fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/credential', requestOptions)
+        fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/credential', requestOptions)
             .then(async response => {
                 const data = await response.text();
                 console.log(data);
