@@ -18,6 +18,7 @@ class Credential extends Component {
       }
 
     static async getInitialProps(router) {
+    try{
     const res = await fetch(`http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/${router.query.credentialID}/`);
     Cookie.set("credentialID", router.query.credentialID);
     Cookie.set("credentialName", router.query.credentialName)
@@ -31,10 +32,13 @@ class Credential extends Component {
         console.log(e);
     }
     }
+    catch (e) {
+        console.log("failed to fetch")
+    }
+  }
 
     onSubmit = (model) => {
         var stringModel = JSON.stringify(model)
-        // alert(stringModel);
         Cookie.set("data",stringModel)
         const {pathname} = Router
         Router.push('/credentials/confirmation')
@@ -58,12 +62,6 @@ class Credential extends Component {
         <div className="grid">
         <DynamicForm className = "form"
           title = {this.props.router.query.credentialName}
-        //   model = {[
-        //     {key: "name", label: "Name", props: {required: true}},
-        //     {key: "age", label: "Age", type: "number"},
-        //     {key: "qualification", label: "Qualification"},
-        //     {key: "rating", label: "Rating", type: "number", props: {min:0, max:5}}
-        //   ]}
           model = {this.props.data}
           onSubmit = {(model) => {this.onSubmit(model)}}
           />
