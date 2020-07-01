@@ -19,7 +19,7 @@ class Credential extends Component {
 
     static async getInitialProps(router) {
     
-    const res = await fetch(`http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/${router.query.credentialID}/`);
+    const res = await fetch(`https://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/${router.query.credentialID}/`);
     Cookie.set("credentialID", router.query.credentialID);
     Cookie.set("credentialName", router.query.credentialName)
     try{

@@ -233,7 +233,7 @@ function Home({connectionID, QRCode, failed}) {
 
 export async function getStaticProps() {
   try{
-    const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/connectionInvitation')
+    const res = await fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/connectionInvitation')
     console.log("getting qr")
     const json = await res.json()
     console.log(json)
