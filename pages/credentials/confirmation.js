@@ -69,18 +69,19 @@ class Confirmation extends Component {
         console.log("THIS IS THE MODEL:");
         console.log(model);
         const obj = model;
+        var labelArray = []
         try{
-          const labelArray = JSON.parse(Cookie.get('credentialLabel'));
+        labelArray = JSON.parse(Cookie.get('credentialLabel'));
         }
-        catch (e){
-          console.log("labelArray is not defined but error is caught")
+        catch (e) {
+          console.log(e)
         }
 
         let content = "";
 
         function printData(){
             var dataArray = [];
-            try{
+          try{
             const obj = JSON.parse(model);
             console.log(obj)
             console.log(obj.firstName);
@@ -95,7 +96,7 @@ class Confirmation extends Component {
             content = dataArray;
           }
           catch (e){
-            console.log("obj is not defined but error is caught")
+            console.log(e)
           }
         }
 
