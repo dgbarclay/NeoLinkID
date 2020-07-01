@@ -13,6 +13,7 @@
       "static/runtime/main-b2a93c9aa1115b600881.js"
     ],
     "/_app": [
+      "static/runtime/webpack-b65cab0b00afd201cbda.js",
       "static/chunks/framework.98c1b221acb34aa9927b.js",
       "static/chunks/commons.a16e8ccce0f0c358f29d.js",
       "static/css/8be56b4bebca315e7d04.css",
