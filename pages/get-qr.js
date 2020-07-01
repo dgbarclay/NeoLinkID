@@ -15,7 +15,7 @@ function Home({connectionID, QRCode, failed}) {
       </Head>
 
       <main>
-      {failed && <h2>Whoops, double check your connection.</h2> }
+      {failed && <h2>Server currently offline.</h2> }
       {!failed && <h2>Credential QR Code</h2> }
       {!failed && <p>Scan the QR code with guardian device.</p>  }
         <br></br>
@@ -234,7 +234,6 @@ function Home({connectionID, QRCode, failed}) {
 export async function getStaticProps() {
   try{
     const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/connectionInvitation')
-    //  const json = await res.text()
     console.log("getting qr")
     const json = await res.json()
     console.log(json)

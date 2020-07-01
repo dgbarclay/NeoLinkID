@@ -19,7 +19,7 @@ function Home({jsonArray, failed}) {
       <main>
         {!failed && <h1 className="title">NeoLinkID</h1> }
 
-        {failed && <h2>Whoops, double check your connection.</h2> }
+        {failed && <h2>Server currently offline.</h2> }
         
         {!failed && <h3 className="newTitle">Issue Credential:</h3>}
 
