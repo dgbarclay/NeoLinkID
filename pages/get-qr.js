@@ -245,6 +245,7 @@ export async function getStaticProps() {
       },
     }
   } catch (e){
+    console.log("server offline")
     return {
       props: {
         failed: true
