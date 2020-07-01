@@ -24,7 +24,7 @@ export default class DynamicCards extends React.Component{
     }
 
     renderCards = () => {
-        let model = this.props.model;
+        try {let model = this.props.model;
 
         let formUI = model.map((m) => {
             let credentialName = m.credentialName;
@@ -43,7 +43,10 @@ export default class DynamicCards extends React.Component{
                 </div>
             );
         });
-        return formUI;
+        return formUI;}
+        catch (e){
+          console.log("model not defined but error has been caught")
+        }
     }
 
     render(){

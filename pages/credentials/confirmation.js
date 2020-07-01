@@ -42,14 +42,11 @@ class Confirmation extends Component {
                 const data = await response.text();
                 console.log(data);
 
-                // check for error response
                 if (!response.ok) {
-                    // get error message from body or default to response status
                     const error = (data && data.message) || response.status;
                     return Promise.reject(error);
                 }
                 else{
-                    // clear data cookie
                     Cookie.set('data', '');
                     console.log("success")
                     const {pathname} = Router
@@ -72,12 +69,18 @@ class Confirmation extends Component {
         console.log("THIS IS THE MODEL:");
         console.log(model);
         const obj = model;
-        const labelArray = JSON.parse(Cookie.get('credentialLabel'));
+        try{
+          const labelArray = JSON.parse(Cookie.get('credentialLabel'));
+        }
+        catch (e){
+          console.log("labelArray is not defined but error is caught")
+        }
 
         let content = "";
 
         function printData(){
             var dataArray = [];
+            try{
             const obj = JSON.parse(model);
             console.log(obj)
             console.log(obj.firstName);
@@ -90,6 +93,10 @@ class Confirmation extends Component {
                 i++;
             }
             content = dataArray;
+          }
+          catch (e){
+            console.log("obj is not defined but error is caught")
+          }
         }
 
         const {loading} = this.state;
@@ -135,7 +142,6 @@ class Confirmation extends Component {
           
             <Link 
                 href={{ pathname: '/credentials/credential', query: { credentialID: credentialID, credentialName: credentialName, edit: true }}}
-                // as={as}
             >
             <div className="cardCancel">
             <p>Edit</p>

@@ -5,7 +5,6 @@ import Cookie from 'js-cookie';
 
 
 export default class DynamicForm extends React.Component{
-    // will depend on what is passed into form
     state = {
 
     }
@@ -34,6 +33,7 @@ export default class DynamicForm extends React.Component{
       }
 
     renderForm = () => {
+      try{
         console.log("TOP")
         let model = this.props.model;
         let title = model.title;
@@ -53,7 +53,7 @@ export default class DynamicForm extends React.Component{
             let label = m.label;
             labelArray.push(label);
             let type = m.type || "text";
-            let props = m.props || {}; //range or required etc
+            let props = m.props || {};
 
             return(
                 <div key={key} className="row">
@@ -81,6 +81,10 @@ export default class DynamicForm extends React.Component{
         Cookie.set('credentialLabel',labelArray)
         Cookie.set('data', '');
         return formUI;
+      }
+      catch (e){
+        console.log("model not defined but error has been caught")
+      }
     }
 
     onSubmit = (e) => {

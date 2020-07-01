@@ -3,11 +3,10 @@ import Link from 'next/link'
 import DynamicCards from "./components/DynamicCards.js";
 import fetch from 'node-fetch'
 import React from 'react'
-import Page from "./components/Page.js";
 
 
 
-function Home({jsonArray}) {
+function Home({jsonArray, failed}) {
 
   return (
     <div className="container">
@@ -18,22 +17,18 @@ function Home({jsonArray}) {
       </Head>
 
       <main>
-        <h1 className="title">
-          NeoLinkID
-        </h1>
+        {!failed && <h1 className="title">NeoLinkID</h1> }
+
+        {failed && <h2>Whoops, double check your connection.</h2> }
         
-        <h3 className="newTitle">Issue Credential:</h3>
+        {!failed && <h3 className="newTitle">Issue Credential:</h3>}
 
         <div className="grid">
-        <DynamicCards
-        model= {jsonArray}
-          />
+        {!failed && <DynamicCards model= {jsonArray}/>}
 
-          <Link href="/">
-            <div className="cardFinish">
-            <h3>Finish</h3>
-            </div>
-          </Link>
+        {failed && <Link href="/connected"><div className="card"><h3>Retry</h3></div></Link>}
+        {!failed && <Link href="/"><div className="cardFinish"><h3>Finish</h3></div></Link>}
+
         </div>
       </main>
 
@@ -151,17 +146,17 @@ function Home({jsonArray}) {
         }
 
         .card {
-          margin: 0.2rem;
-          width: 60%;
+          margin: 0.1rem;
           flex-basis: 45%;
           padding: 1rem;
           text-align: center;
-          color: black;
+          color: inherit;
           text-decoration: none;
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
           background-color: white;
+          color: black;
         }
 
         .cardFinish {
@@ -250,8 +245,8 @@ function Home({jsonArray}) {
 }
 
 export async function getStaticProps() {
+  try{
     const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema')
-    // const json = await res.text()
     const json = await res.json()
 
     const fieldArray = [];
@@ -269,10 +264,19 @@ export async function getStaticProps() {
     return {
       props: {
         jsonArray: json,
-        fieldArray: fieldArray
+        fieldArray: fieldArray,
+        failed: false
       },
     }
   }
+  catch (e){
+    return {
+      props: {
+        failed: true
+      },
+    }
+  }
+}
 
 
 export default Home

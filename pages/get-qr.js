@@ -231,7 +231,6 @@ function Home({connectionID, QRCode, failed}) {
   )
 }
 
-// runs before page loads
 export async function getStaticProps() {
   try{
     const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/connectionInvitation')

@@ -33,7 +33,7 @@ img {
   display: block;
 }
 
-/* #nprogress .bar {
+#nprogress .bar {
   background: white !important;
   height: 6px !important;
 }
@@ -41,7 +41,7 @@ img {
 #nprogress .spinner-icon {
   border-top-color: white !important;
   border-left-color: white !important;
-} */
+}
 
 label {
   color: white;
