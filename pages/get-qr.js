@@ -248,7 +248,7 @@ export async function getStaticProps() {
     console.log("server offline")
     return {
       props: {
-        failed: false
+        failed: true
       },
     }
   }
