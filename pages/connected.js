@@ -246,7 +246,7 @@ function Home({jsonArray, failed}) {
 
 export async function getStaticProps() {
   try{
-    const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema')
+    const res = await fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema')
     const json = await res.json()
 
     const fieldArray = [];
@@ -255,7 +255,7 @@ export async function getStaticProps() {
     console.log(json.length);
     for( var i=0; i < json.length; i++){
         var id = json[i].credentialId;
-        const res = await fetch('http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/'+id)
+        const res = await fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/'+id)
         const fields = await res.json()
         fieldArray.push(fields)
     }
