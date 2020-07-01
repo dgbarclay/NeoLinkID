@@ -18,7 +18,7 @@ class Credential extends Component {
       }
 
     static async getInitialProps(router) {
-    try{
+    
     const res = await fetch(`http://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema/${router.query.credentialID}/`);
     Cookie.set("credentialID", router.query.credentialID);
     Cookie.set("credentialName", router.query.credentialName)
@@ -30,10 +30,6 @@ class Credential extends Component {
         };
     } catch (e){
         console.log(e);
-    }
-    }
-    catch (e) {
-        console.log("failed to fetch")
     }
   }
 
