@@ -244,7 +244,7 @@ function Home({jsonArray, failed}) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   //hey
   try{
     const res = await fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/credentialSchema')

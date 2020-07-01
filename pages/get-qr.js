@@ -231,7 +231,7 @@ function Home({connectionID, QRCode, failed}) {
   )
 }
 
-export async function getStaticProps() {
+export async function getServerSideProps() {
   try{
     const res = await fetch('https://iwsg2020.crc.nd.edu:3000/DCR/v1/connectionInvitation')
     console.log("getting qr")
