@@ -2,11 +2,18 @@ import Head from 'next/head';
 import Link from 'next/link';
 import fetch from 'node-fetch';
 import Cookie from "js-cookie";
+import Modal from 'react-modal';
+import { useRouter } from "next/router";
+import ModalConfirm from "./components/modalConfirm";
+
+
+Modal.setAppElement("#__next");
 
 
 
 function Home({connectionID, QRCode, failed}) {
   Cookie.set("connectionID", connectionID);
+  const router = useRouter(); 
   return (
     <div className="container">
       <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
@@ -24,9 +31,9 @@ function Home({connectionID, QRCode, failed}) {
 
         <div className="grid">
             
-        {!failed && <Link href="/connected"><div className="card"><h3>Done</h3></div></Link>}
+        {!failed && <Link href={'/get-qr/?modalConfirm=${true}'}  as={'/components/modalConfirm'}><div className="card"><h3>Next</h3></div></Link>}
         {failed && <Link href="/get-qr"><div className="card"><h3>Retry</h3></div></Link>}
-          
+           
 
           <Link href="/">
             <div className="cardCancel">
@@ -34,7 +41,14 @@ function Home({connectionID, QRCode, failed}) {
             </div>
           </Link>
         </div>
+        <Modal 
+          isOpen={!!router.query.modalConfirm }
+          onRequestClose={() => router.push("/get-qr")}>
+            <ModalConfirm/>
+      </Modal>
       </main>
+
+      
 
       <style jsx>{`
         .container {
