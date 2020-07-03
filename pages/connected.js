@@ -27,6 +27,7 @@ function Home({jsonArray, failed}) {
         {!failed && <DynamicCards model= {jsonArray}/>}
 
         {failed && <Link href="/connected"><div className="card"><h3>Retry</h3></div></Link>}
+        
         {!failed && <Link href="/"><div className="cardFinish"><h3>Finish</h3></div></Link>}
 
         </div>

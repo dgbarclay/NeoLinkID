@@ -47,7 +47,6 @@ class Confirmation extends Component {
                     return Promise.reject(error);
                 }
                 else{
-                    Cookie.set('data', '');
                     console.log("success")
                     const {pathname} = Router
                     Router.push('/credentials/success')
