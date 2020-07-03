@@ -1,8 +1,11 @@
 import Head from 'next/head'
 import Link from 'next/link'
+import Cookie from 'js-cookie'
 
 
 export default function Home() {
+  Cookie.set('data', '');
+
   return (
     <div className="container">
       <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />

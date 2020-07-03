@@ -55,31 +55,59 @@ export default class DynamicForm extends React.Component{
             let type = m.type || "text";
             let props = m.props || {};
 
-            return(
+            if (type == "dropdown"){
+              let val = m.values;
+              return(
                 <div key={key} className="row">
-                    <div className="col-25">
+                  <div className="col-25">
                     <label className="form-label"
                     key={"l" + m.key}
                     htmlFor={m.key}>
                         {label}
                     </label>
-                    </div>
-                    <div className="col-75">
-                    <input {...props}
+                  </div>
+                  <div className="col-75">
+                    <select {...props}
                     ref={(key)=>{this[m.key]=key}}
                     className = "form-input"
                     type={type}
                     key={"i" + m.key}
                     onChange={(e)=>{this.onChange(e, key)}}
                     value={obj[key]}
-                    />
+                    >
+                      <option value="">Select an option</option>
+                      {val.map(values => <option value={values} key={values}>{values}</option>)}
+                    </select>
                     </div>
                 </div>
-            );
+              );
+            }
+            else{
+              return(
+                  <div key={key} className="row">
+                      <div className="col-25">
+                      <label className="form-label"
+                      key={"l" + m.key}
+                      htmlFor={m.key}>
+                          {label}
+                      </label>
+                      </div>
+                      <div className="col-75">
+                      <input {...props}
+                      ref={(key)=>{this[m.key]=key}}
+                      className = "form-input"
+                      type={type}
+                      key={"i" + m.key}
+                      onChange={(e)=>{this.onChange(e, key)}}
+                      value={obj[key]}
+                      />
+                      </div>
+                  </div>
+              );
+            }
         });
 
         Cookie.set('credentialLabel',labelArray)
-        Cookie.set('data', '');
         return formUI;
       }
       catch (e){

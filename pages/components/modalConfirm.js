@@ -12,7 +12,7 @@ export default function Home() {
       </Head>
 
       <main>
-        <h2>Does the Guardian's phone show a successful connection?</h2>
+        <h3>Does the Guardian's phone show a successful connection?</h3>
 
         <div className="grid">
           <Link href="/connected">
@@ -39,13 +39,12 @@ export default function Home() {
           align-items: center;
         }
 
-        h2{
+        h3{
             text-align: center;
             justify-content: center;
         }
 
         main {
-          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;

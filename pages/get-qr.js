@@ -31,7 +31,7 @@ function Home({connectionID, QRCode, failed}) {
 
         <div className="grid">
             
-        {!failed && <Link href={'/get-qr/?modalConfirm=${true}'}  as={'/components/modalConfirm'}><div className="card"><h3>Next</h3></div></Link>}
+        {!failed && <Link href={'/get-qr/?modalConfirm=${true}'} as={'/components/modalConfirm'}><div className="card"><h3>Next</h3></div></Link>}
         {failed && <Link href="/get-qr"><div className="card"><h3>Retry</h3></div></Link>}
            
 
@@ -41,7 +41,13 @@ function Home({connectionID, QRCode, failed}) {
             </div>
           </Link>
         </div>
-        <Modal 
+        <Modal
+        style={{
+          content: {
+            backgroundColor: '#00B2FF',
+            backgroundImage: 'linear-gradient(to bottom right, rgb(128, 229, 255) ,rgb(0, 22, 221))'
+          }
+        }} 
           isOpen={!!router.query.modalConfirm }
           onRequestClose={() => router.push("/get-qr")}>
             <ModalConfirm/>
@@ -66,7 +72,6 @@ function Home({connectionID, QRCode, failed}) {
         }
 
         main {
-          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -97,6 +102,7 @@ function Home({connectionID, QRCode, failed}) {
           color: inherit;
           text-decoration: none;
         }
+
 
         .title a {
           color: #0070f3;
