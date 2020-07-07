@@ -1,12 +1,12 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import DynamicForm from "./components/DynamicForm.js";
-import { useRouter, createRouter } from 'next/router';
 import fetch from 'node-fetch';
 import { withRouter } from 'next/router';
 import React, { Component } from "react";
 import Cookie from 'js-cookie';
 import Router from 'next/router';
+import Header from "../components/Header";
+
 
 class Confirmation extends Component {
     
@@ -76,57 +76,56 @@ class Confirmation extends Component {
           console.log(e)
         }
 
-        let content = "";
+        let form = "";
 
-        function printData(){
-            var dataArray = [];
-          try{
-            const obj = JSON.parse(model);
-            console.log(obj)
-            console.log(obj.firstName);
-            
-            var i = 0;
-            for (var key in obj){
-                var label = labelArray[i];
-                var value = obj[key];
-                dataArray.push(<tr><td><b>{label}</b></td><td>{value}</td></tr>);
-                i++;
-            }
-            content = dataArray;
+        function printForm(){
+          var dataArray = [];
+        try{
+          const obj = JSON.parse(model);
+          console.log(obj)
+          console.log(obj.firstName);
+          
+          var i = 0;
+          for (var key in obj){
+              var label = labelArray[i];
+              var value = obj[key];
+              dataArray.push(<div><div className='col-25'><label>{label}</label></div><div className='col-75'><input type='text' value={value} readOnly></input></div></div>);
+              i++;
           }
-          catch (e){
-            console.log(e)
-          }
+          form = dataArray;
         }
+        catch (e){
+          console.log(e)
+        }
+      }
 
         const {loading} = this.state;
         const spinnerStyle = {
             fontSize: "24px",
-            color: "#00B2FF"
+            color: "white"
           };
 
   return (
     <div className="container">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 
-      <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header/>
 
       <main>
-          <h2>Confirm the following values are correct.</h2>
-        {printData()}
-        <table id="t01">
-            <tbody>
-            <tr>
-                <th>Field Name</th>
-                <th>Value</th>
-            </tr>
-        {content}
-        </tbody>
-        </table>
+          <h1>Confirmation</h1>
+          <p>Are the following details correct?</p>
+
+        {printForm()}
+        <div className="form-container">
+        <form>
+          {form}
+        </form>
+        </div>
 
         <div className="grid">
         
@@ -153,53 +152,97 @@ class Confirmation extends Component {
         
       </main>
 
-      <style jsx>{`      
+      <style jsx>{`   
+      
+      
+      * {
+        box-sizing: border-box;
+      }
+      
+      input[type=text], select, textarea {
+        width: 100%;
+        padding: 12px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+        resize: vertical;
+      }
+      
+      label {
+        padding: 12px 12px 12px 0;
+        display: inline-block;
+      }
+      
+      input[type=submit] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        float: right;
+      }
+      
+      input[type=submit]:hover {
+        background-color: #45a049;
+      }
+      
+      .form-container {
+        margin-top: 1rem;
+        border-radius: 5px;
+        background-color: #f2f2f2;
+        padding: 20px;
+      }
+      
+      .col-25 {
+        float: left;
+        width: 25%;
+        margin-top: 6px;
+      }
+      
+      .col-75 {
+        float: left;
+        width: 75%;
+        margin-top: 6px;
+      }
+      
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      
+      /* Responsive layout - when the screen is less than 600px wide, make the two columns stack on top of each other instead of next to each other */
+      @media screen and (max-width: 600px) {
+        .col-25, .col-75, input[type=submit] {
+          width: 100%;
+          margin-top: 0;
+        }
+      }
 
         h2{
             text-align: center;
         }
 
-        table {
-            border: 1px solid black;
-            width:60%;
-            border-collapse: collapse;
-
+        h1, p{
+          line-height: 0;
 
         }
-        th, td {
-            border: 0px solid black;
-            border-collapse: collapse;
+        p {
+          color: rgba(0,163,255,0.7);
         }
-        th, td {
-            padding: 5px;
-            text-align: left;
-        }
-        #t01 tr:nth-child(even) {
-            background-color: #eee;
-        }
-        #t01 tr:nth-child(odd) {
-        background-color: #fff;
-        }
-        #t01 th {
-            background-color: #0085FF;
-            color: white;
-        }
+
         .container {
             min-height: 100vh;
-            padding: 0 0.5rem;
+            padding: 0 0rem;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
           }
   
-          img{
-            width: 80%;
-            max-width: 600px
-          }
-  
           main {
-            padding: 5rem 0;
+            padding: 0rem 0;
             flex: 1;
             display: flex;
             flex-direction: column;
@@ -211,16 +254,6 @@ class Confirmation extends Component {
             width: 100%;
             height: 100px;
             border-top: 1px solid #eaeaea;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-          }
-  
-          footer img {
-            margin-left: 0.5rem;
-          }
-  
-          footer a {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -287,8 +320,8 @@ class Confirmation extends Component {
             border: 1px solid #eaeaea;
             border-radius: 10px;
             transition: color 0.15s ease, border-color 0.15s ease;
-            background-color: white;
-            color: black;
+            background-color: #00A3FF;
+            color: white;
           }
   
           .cardCancel {
@@ -298,7 +331,7 @@ class Confirmation extends Component {
               text-align: center;
               color: inherit;
               text-decoration: none;
-              border: 1px solid #eaeaea;
+              border: 1px solid #00A3FF;
               border-radius: 10px;
               transition: color 0.15s ease, border-color 0.15s ease;
             }
@@ -321,6 +354,7 @@ class Confirmation extends Component {
             .cardCancel p {
               margin: 0 0 0rem 0;
               font-size: 1.0rem;
+              color: #00A3FF;
             }
   
   

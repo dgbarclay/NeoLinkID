@@ -4,11 +4,10 @@ body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu,
     Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  color: white;
+  color: #00A3FF;
   line-height: 1.6;
   font-size: 18px;
-  background-color: #00B2FF;
-  background-image: linear-gradient(to bottom right, rgb(128, 229, 255) ,rgb(0, 22, 221)); /* Standard syntax (must be last) */
+  background-color: white;
 }
 
 * {
@@ -16,7 +15,7 @@ body {
 }
 
 h1{
-  color: white;
+  color: #00A3FF;
 }
 
 a {
@@ -44,7 +43,7 @@ img {
 } */
 
 label {
-  color: white;
+  color: black;
 }
 
 

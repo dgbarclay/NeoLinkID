@@ -8,7 +8,7 @@ export default function Home() {
 
   return (
     <div className="container">
-      <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
         <link rel="icon" href="/favicon.ico" />
@@ -30,6 +30,11 @@ export default function Home() {
       </main>
 
       <style jsx>{`
+
+      h1 {
+        color: white;
+      }
+      
         .container {
           min-height: 100vh;
           padding: 0 0.5rem;
@@ -133,8 +138,8 @@ export default function Home() {
         .card:hover,
         .card:focus,
         .card:active {
-          color: #73faf5;
-          border-color: #73faf5;
+          color: #0016DD;
+          border-color: #0016DD;
         }
 
         .card h3 {
@@ -152,6 +157,7 @@ export default function Home() {
           height: 1em;
         }
 
+
         @media (max-width: 600px) {
           .grid {
             width: 100%;
@@ -167,6 +173,8 @@ export default function Home() {
           padding: 0;
           margin: 0;
           font-family: 'Montserrat', sans-serif;
+          background-color: #00A3FF;
+          color: #FFFFFF;
         }
 
         body {

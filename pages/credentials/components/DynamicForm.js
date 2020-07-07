@@ -54,6 +54,7 @@ export default class DynamicForm extends React.Component{
             labelArray.push(label);
             let type = m.type || "text";
             let props = m.props || {};
+            
 
             if (type == "dropdown"){
               let val = m.values;
@@ -82,15 +83,40 @@ export default class DynamicForm extends React.Component{
                 </div>
               );
             }
+            else if (type == "date"){
+              let val = m.values;
+              return(
+                <div key={key} className="row">
+                  <div className="col-25">
+                    <label className="form-label"
+                    key={"l" + m.key}
+                    htmlFor={m.key}>
+                        {label}
+                    </label>
+                  </div>
+                  <div className="col-75">
+                  <input {...props}
+                      ref={(key)=>{this[m.key]=key}}
+                      className = "form-input"
+                      type={type}
+                      key={"i" + m.key}
+                      onChange={(e)=>{this.onChange(e, key)}}
+                      value={obj[key]}
+                      placeholder={label}
+                      />
+                    </div>
+                </div>
+              );
+            }
             else{
               return(
                   <div key={key} className="row">
-                      <div className="col-25">
-                      <label className="form-label"
-                      key={"l" + m.key}
-                      htmlFor={m.key}>
-                          {label}
-                      </label>
+                        <div className="col-25">
+                        <label className="form-label"
+                        key={"l" + m.key}
+                        htmlFor={m.key}>
+                            {label}
+                        </label>
                       </div>
                       <div className="col-75">
                       <input {...props}
@@ -100,6 +126,7 @@ export default class DynamicForm extends React.Component{
                       key={"i" + m.key}
                       onChange={(e)=>{this.onChange(e, key)}}
                       value={obj[key]}
+                      placeholder={label}
                       />
                       </div>
                   </div>
@@ -133,7 +160,7 @@ export default class DynamicForm extends React.Component{
         return (
             <div className={this.props.className}>
                 
-                <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
                 
                 <form className="dynamic-form" onSubmit={(e)=>{this.onSubmit(e)}}>
                 <div className="containerOuter">
@@ -152,12 +179,33 @@ export default class DynamicForm extends React.Component{
                 </form>
 
                 
-                <style jsx>{`
+                <style>{`
                 * {
                     box-sizing: border-box;
                   }
 
+                  input{
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #00A3FF;
+                    border-radius: 4px;
+                    resize: vertical;
+                  }
 
+                  input[type=text], select, textarea {
+                    width: 100%;
+                    padding: 12px;
+                    border: 1px solid #00A3FF;
+                    border-radius: 4px;
+                    resize: vertical;
+                  }
+
+                  label {
+                    padding: 12px 12px 12px 0;
+                    display: inline-block;
+                  }
+
+          
                    .grid {
                     display: flex;
                     align-items: center;
@@ -169,13 +217,6 @@ export default class DynamicForm extends React.Component{
                     }
                   
                   
-                  input[type=text], select, textarea {
-                    width: 100%;
-                    padding: 12px;
-                    border: 1px solid #ccc;
-                    border-radius: 4px;
-                    resize: vertical;
-                  }
                   
                   label {
                     padding: 12px 12px 12px 0;
@@ -202,6 +243,7 @@ export default class DynamicForm extends React.Component{
                   .cardSubmit h3 {
                     margin: 0 0 0rem 0;
                     font-size: 1.2rem;
+                    color: white;
                     }
 
                   .cardSubmit {
@@ -215,7 +257,7 @@ export default class DynamicForm extends React.Component{
                     border: 1px solid #eaeaea;
                     border-radius: 10px;
                     transition: color 0.15s ease, border-color 0.15s ease;
-                    background-color: white;
+                    background-color: #00A3FF;
                     font-family: 'Montserrat', sans-serif;
 
                   }
@@ -227,14 +269,12 @@ export default class DynamicForm extends React.Component{
                     border-color: #0070f3;
                   }
 
-
-
                   .containerForm {
-                    border-radius: 5px;
                     
-                    align-items: center;
-                    justify-content: right;
+                    border-radius: 8px;
+                    background-color: #f2f2f2;
                     padding: 20px;
+                    
                   }
 
                   .containerOuter {
@@ -267,6 +307,8 @@ export default class DynamicForm extends React.Component{
                     width: 75%;
                     margin-top: 6px;
                   }
+
+                  
                   
                   @media screen and (max-width: 10000px) {
                     .col-25, .col-75, input[type=submit] {

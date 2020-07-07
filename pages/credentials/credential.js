@@ -7,6 +7,8 @@ import { withRouter } from 'next/router';
 import React, { Component } from "react";
 import Cookie from 'js-cookie';
 import Router from 'next/router';
+import Header from "../components/Header";
+
 
 
 
@@ -45,16 +47,18 @@ class Credential extends Component {
 
   return (
     <div className="container">
-      <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header/>
 
       <main>
         <h1 className="title">
             {this.props.router.query.credentialName}
         </h1>
+        <p>Enter details below.</p>
         <div className="grid">
         <DynamicForm className = "form"
           title = {this.props.router.query.credentialName}
@@ -76,15 +80,24 @@ class Credential extends Component {
       <style jsx>{`
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
+          padding: 0 0rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
         }
 
+        h1{
+          line-height: 1;
+          margin-bottom: 0.2rem;
+        }
+        p {
+          color: rgba(0,163,255,0.7);
+          margin-top: 0rem;
+        }
+
         main {
-          padding: 5rem 0;
+          padding: 1rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -194,7 +207,7 @@ class Credential extends Component {
             text-align: center;
             color: inherit;
             text-decoration: none;
-            border: 1px solid #eaeaea;
+            border: 1px solid #00A3FF;
             border-radius: 10px;
             transition: color 0.15s ease, border-color 0.15s ease;
             background-color: none;
@@ -203,19 +216,14 @@ class Credential extends Component {
         .card:hover,
         .card:focus,
         .card:active {
-          color: #73faf5;
-          border-color: #73faf5;
+          color: #0016DD;
+          border-color: #0016DD;
         }
 
         .card h3 {
           margin: 0 0 0rem 0;
           font-size: 1.2rem;
         }
-
-        .cardFinish h3 {
-            margin: 0 0 0rem 0;
-            font-size: 1.2rem;
-          }
 
         .card p {
           margin: 0;

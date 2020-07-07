@@ -5,6 +5,7 @@ import Cookie from "js-cookie";
 import Modal from 'react-modal';
 import { useRouter } from "next/router";
 import ModalConfirm from "./components/modalConfirm";
+import Header from "./components/Header";
 
 
 Modal.setAppElement("#__next");
@@ -16,15 +17,17 @@ function Home({connectionID, QRCode, failed}) {
   const router = useRouter(); 
   return (
     <div className="container">
-      <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
       </Head>
+      <Header/>
+      
 
       <main>
       {failed && <h2>Server currently offline.</h2> }
-      {!failed && <h2>Credential QR Code</h2> }
-      {!failed && <p>Scan the QR code with guardian device.</p>  }
+      {!failed && <h1>Credential QR Code</h1> }
+      {!failed && <p>Scan QR code with guardian's device.</p>  }
         <br></br>
         
         <img src={QRCode}/>
@@ -37,7 +40,7 @@ function Home({connectionID, QRCode, failed}) {
 
           <Link href="/">
             <div className="cardCancel">
-            <p>Cancel</p>
+            <h3>Cancel</h3>
             </div>
           </Link>
         </div>
@@ -57,9 +60,19 @@ function Home({connectionID, QRCode, failed}) {
       
 
       <style jsx>{`
+
+        h1{
+          line-height: 1;
+          margin-bottom: 0.2rem;
+        }
+        p {
+          color: rgba(0,163,255,0.7);
+          margin-top: 0rem;
+        }
+
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
+          padding: 0 0rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
@@ -160,8 +173,8 @@ function Home({connectionID, QRCode, failed}) {
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
-          background-color: white;
-          color: black;
+          background-color: #00A3FF ;
+          color: white;
         }
 
         .cardCancel {
@@ -171,7 +184,7 @@ function Home({connectionID, QRCode, failed}) {
             text-align: center;
             color: inherit;
             text-decoration: none;
-            border: 1px solid #eaeaea;
+            border: 1px solid #00A3FF;
             border-radius: 10px;
             transition: color 0.15s ease, border-color 0.15s ease;
           }
@@ -179,8 +192,8 @@ function Home({connectionID, QRCode, failed}) {
         .cardCancel:hover,
         .cardCancel:focus,
         .cardCancel:active {
-          color: #73faf5;
-          border-color: #73faf5;
+          color: #0016DD;
+          border-color: #0016DD;
         }
 
         .cardCancel h3 {
@@ -191,14 +204,15 @@ function Home({connectionID, QRCode, failed}) {
           .cardCancel p {
             margin: 0 0 0rem 0;
             font-size: 1.0rem;
+            color: #00A3ff;
           }
 
 
         .card:hover,
         .card:focus,
         .card:active {
-          color: #0070f3;
-          border-color: #0070f3;
+          color: #0016DD;
+          border-color: #0016DD;
         }
 
         .card h3 {

@@ -54,7 +54,7 @@ export default class DynamicCards extends React.Component{
         return (
             <div className="grid">
                 
-                <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+                <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
                 
                 {this.renderCards()}
                     
@@ -168,7 +168,7 @@ export default class DynamicCards extends React.Component{
           flex-wrap: wrap;
 
           max-width: 800px;
-          margin-top: 0rem;
+          margin-top: 3rem;
         }
 
         .card {
@@ -181,8 +181,8 @@ export default class DynamicCards extends React.Component{
           border: 1px solid #eaeaea;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
-          background-color: white;
-          color: black;
+          background-color: #00A3FF;
+          color: white;
         }
 
         .card:hover,

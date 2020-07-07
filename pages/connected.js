@@ -1,8 +1,10 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import DynamicCards from "./components/DynamicCards.js";
+import Header from "./components/Header";
 import fetch from 'node-fetch'
 import React from 'react'
+
 
 
 
@@ -10,18 +12,20 @@ function Home({jsonArray, failed}) {
 
   return (
     <div className="container">
-      <link href="https://fonts.googleapis.com/css?family=Quicksand:300,500" rel="stylesheet" />
+      <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header/>
 
       <main>
-        {!failed && <h1 className="title">NeoLinkID</h1> }
+        {!failed && <h1>Issue Credential</h1> }
+        {!failed && <p>Select an option below to begin.</p> }
 
         {failed && <h2>Server currently offline.</h2> }
         
-        {!failed && <h3 className="newTitle">Issue Credential:</h3>}
+        {/* {!failed && <h3 className="newTitle">Issue Credential:</h3>} */}
 
         <div className="grid">
         {!failed && <DynamicCards model= {jsonArray}/>}
@@ -36,11 +40,20 @@ function Home({jsonArray, failed}) {
       <style jsx>{`
         .container {
           min-height: 100vh;
-          padding: 0 0.5rem;
+          padding: 0 0rem;
           display: flex;
           flex-direction: column;
           justify-content: center;
           align-items: center;
+        }
+
+        h1{
+          line-height: 1;
+          margin-bottom: 0.2rem;
+        }
+        p {
+          color: rgba(0,163,255,0.7);
+          margin-top: 0rem;
         }
 
         main {
@@ -161,14 +174,14 @@ function Home({jsonArray, failed}) {
         }
 
         .cardFinish {
-          margin: 3rem;
+          margin-top: 6rem;
           width: 60%;
           flex-basis: 45%;
-          padding: 1rem;
+          padding: 0.5rem;
           text-align: center;
           color: inherit;
           text-decoration: none;
-          border: 1px solid #eaeaea;
+          border: 1px solid #00A3FF;
           border-radius: 10px;
           transition: color 0.15s ease, border-color 0.15s ease;
           }
@@ -183,8 +196,8 @@ function Home({jsonArray, failed}) {
         .cardFinish:hover,
         .cardFinish:focus,
         .cardFinish:active {
-          color: #73faf5;
-          border-color: #73faf5;
+          color: #0016DD;
+          border-color: #0016DD;
         }
 
         .card h3 {
