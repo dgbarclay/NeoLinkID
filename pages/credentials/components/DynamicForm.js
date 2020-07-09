@@ -6,24 +6,35 @@ import Cookie from 'js-cookie';
 
 export default class DynamicForm extends React.Component{
     state = {
-
+        
     }
     constructor(props){
 
         super(props);
+        this.counter = 0;
+        this.edit = false;
 
         let autofill = Cookie.get('data');
         if(autofill){
             var obj = JSON.parse(autofill);
+        }
+        else{
+          let sessionTemp = Cookie.get('session');
+          if (sessionTemp){
+            obj = JSON.parse(sessionTemp);
+            value = obj[key];
+            console.log(value);
+          }
         }
         var keyArray = [];
 
         for (var key in obj){
             var value = obj[key];
             this.state[key] = value
-        }   
+        }
 
     }
+
 
     
 
@@ -40,21 +51,61 @@ export default class DynamicForm extends React.Component{
 
         let autofill = Cookie.get('data');
         console.log(autofill);
+        
         var obj = "";
+        var sessionArr = [];
 
         if(autofill){
-        obj = JSON.parse(autofill);
+          obj = JSON.parse(autofill);
+          this.edit = true;
         }
+        // else{
+        //   autofill = Cookie.get('session');
+        //   obj = JSON.parse(autofill);
+        // }
+  
         var labelArray = [];
 
         let formUI = model.formFields.map((m) => {
-            console.log("IN LOOP")
+            console.log(m)
             let key = m.key;
             let label = m.label;
             labelArray.push(label);
             let type = m.type || "text";
             let props = m.props || {};
-            
+            let session = m.session || false;
+            var value = obj[key];
+            let displayLabel = label;
+
+            console.log("AUTOFILL: ");
+            console.log(autofill);
+            console.log(this.counter);
+            console.log(this.edit);
+
+            if (this.edit == false){
+              if(this.counter == 0){
+                if(!autofill){
+                  if (session==true){
+                      console.log("SESSION IS TRUE")
+                      let sessionTemp = Cookie.get('session');
+                      if (sessionTemp){
+                        obj = JSON.parse(sessionTemp);
+                        value = obj[key];
+                        console.log(value);
+                      }
+                  }
+                }     
+              }
+            }
+
+            console.log(value);
+
+
+
+             
+            if(props.required == true){
+              displayLabel = label + " *";
+            }
 
             if (type == "dropdown"){
               let val = m.values;
@@ -64,7 +115,7 @@ export default class DynamicForm extends React.Component{
                     <label className="form-label"
                     key={"l" + m.key}
                     htmlFor={m.key}>
-                        {label}
+                        {displayLabel}
                     </label>
                   </div>
                   <div className="col-75">
@@ -74,7 +125,7 @@ export default class DynamicForm extends React.Component{
                     type={type}
                     key={"i" + m.key}
                     onChange={(e)=>{this.onChange(e, key)}}
-                    value={obj[key]}
+                    value={value}
                     >
                       <option value="">Select an option</option>
                       {val.map(values => <option value={values} key={values}>{values}</option>)}
@@ -91,7 +142,7 @@ export default class DynamicForm extends React.Component{
                     <label className="form-label"
                     key={"l" + m.key}
                     htmlFor={m.key}>
-                        {label}
+                        {displayLabel}
                     </label>
                   </div>
                   <div className="col-75">
@@ -101,7 +152,7 @@ export default class DynamicForm extends React.Component{
                       type={type}
                       key={"i" + m.key}
                       onChange={(e)=>{this.onChange(e, key)}}
-                      value={obj[key]}
+                      value={value}
                       placeholder={label}
                       />
                     </div>
@@ -115,7 +166,7 @@ export default class DynamicForm extends React.Component{
                         <label className="form-label"
                         key={"l" + m.key}
                         htmlFor={m.key}>
-                            {label}
+                            {displayLabel}
                         </label>
                       </div>
                       <div className="col-75">
@@ -125,7 +176,7 @@ export default class DynamicForm extends React.Component{
                       type={type}
                       key={"i" + m.key}
                       onChange={(e)=>{this.onChange(e, key)}}
-                      value={obj[key]}
+                      value={value}
                       placeholder={label}
                       />
                       </div>
@@ -133,12 +184,18 @@ export default class DynamicForm extends React.Component{
               );
             }
         });
-
-        Cookie.set('credentialLabel',labelArray)
+        this.counter += 1;
+        if (this.counter == 1){
+          Cookie.set('credentialLabel',labelArray)
+          Cookie.set('data', '');
+          // Cookie.set('session', '');
+        }
+        
         return formUI;
       }
       catch (e){
         console.log("model not defined but error has been caught")
+        console.log(e)
       }
     }
 
@@ -168,6 +225,7 @@ export default class DynamicForm extends React.Component{
                     {this.renderForm()}
                 </div>
                 </div>
+                <p className="info">An * indicates required fields.</p>
                 <div className="grid">
                 
                 <button type="submit" className="cardSubmit">
@@ -182,6 +240,13 @@ export default class DynamicForm extends React.Component{
                 <style>{`
                 * {
                     box-sizing: border-box;
+                  }
+
+                  .info{
+                    font-size: 10px;
+                    text-align: center;
+                    margin-top: 0rem;
+                    color: black;
                   }
 
                   input{

@@ -13,7 +13,7 @@ class Success extends Component {
       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/mHBS.png" />
       </Head>
       <Header/>
 

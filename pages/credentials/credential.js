@@ -38,6 +38,7 @@ class Credential extends Component {
     onSubmit = (model) => {
         var stringModel = JSON.stringify(model)
         Cookie.set("data",stringModel)
+        Cookie.set("session",stringModel)
         const {pathname} = Router
         Router.push('/credentials/confirmation')
     }
@@ -50,7 +51,7 @@ class Credential extends Component {
       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/mHBS.png" />
       </Head>
       <Header/>
 

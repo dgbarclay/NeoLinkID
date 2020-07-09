@@ -5,17 +5,19 @@ import Cookie from 'js-cookie'
 
 export default function Home() {
   Cookie.set('data', '');
+  Cookie.set('session', '');
 
   return (
     <div className="container">
       <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet"/>
       <Head>
         <title>NeoLinkID</title>
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/mHBS.png" />
       </Head>
 
       <main>
-        <h1 className="title">
+      <img alt="mHBS logo" src="/mHBS.png" />        
+      <h1 className="title">
           NeoLinkID
         </h1>
 
@@ -30,6 +32,10 @@ export default function Home() {
       </main>
 
       <style jsx>{`
+
+      img{
+        width: 10rem;
+      }
 
       h1 {
         color: white;
@@ -77,21 +83,11 @@ export default function Home() {
           text-decoration: none;
         }
 
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
         .title {
           margin: 0;
           line-height: 1.15;
           font-size: 3rem;
+          margin-top: 2rem;
         }
 
         .title,
