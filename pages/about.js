@@ -24,7 +24,7 @@ export default function Home() {
 
         <div className="grid">
           <Link href="/">
-            <div className="cardFinish">
+            <div className="card">
             <h3>Home</h3>
             </div>
           </Link>
