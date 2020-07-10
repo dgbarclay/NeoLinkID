@@ -11,6 +11,8 @@
     "formik": "^2.1.4",
     "js-cookie": "^2.2.1",
     "next": "9.3.5",
+    "nextjs-progressbar": "0.0.5",
+    "nprogress": "^0.2.0",
     "react": "^16.13.1",
     "react-dom": "16.13.1",
     "react-modal": "^3.11.2",

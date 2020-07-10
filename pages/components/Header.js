@@ -15,14 +15,61 @@ export default class Header extends React.Component{
 
                 
                 <div className="Header">
+                <div className="align">
+                {/* <img rel="icon" src="/mHBS.png" className="logo"/> */}
+
+                <div className="inline-logo">
+                <Link href="/">
+                <img rel="icon" src="/mHBS.png" className="logo"/>
+                </Link>
+                </div>
+                
+                <div className="inline">
                     <Link href="/">
-                    <p><a><img rel="icon" src="/mHBS.png"/> NeoLinkID</a></p>
+                        <h1>
+                            <a>NeoLinkID</a>
+                        </h1>
                     </Link>
+                </div>
+
+                <div className="inline-about">
+                    <Link href="/about">
+                    <img rel="icon" src="/help.png" className="about"/>
+                    </Link>
+                </div>
+                
+                
+                </div>
                 </div>
                 
                 
                    
             <style>{`
+
+            h1{
+                font-size: 1.5rem;
+            }
+
+            .align{
+                text-align: center;
+            }
+
+            .inline {
+                display: inline-block;
+                text-align: center;
+            }
+
+            .inline-logo {
+                display: inline-block;
+                float: left;
+            }
+
+            .inline-about {
+                display: inline-block;
+                float: right;
+            }
+        
+
         a{
             color: white;
         }
@@ -32,13 +79,24 @@ export default class Header extends React.Component{
             text-decoration: none;
         }
 
-        img{
-            width: 20px;
-            display: inline;
-            margin-bottom: 0.3rem;
-            margin-left: auto;
-            margin-right: auto;
-            vertical-align: middle
+        .logo{
+            width: 40px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            margin-left:0.2rem;
+            margin-top: 0.8rem;
+            float: left;
+            // vertical-align: middle;
+        }
+
+        .about{
+            width: 40px;
+            display: inline-block;
+            margin-bottom: 0.5rem;
+            margin-right:0.2rem;
+            margin-top: 0.8rem;
+            float: right;
+            // vertical-align: middle
         }
 
         .full-width{
@@ -47,12 +105,12 @@ export default class Header extends React.Component{
 
         .Header {
             width: 100%;
+            font-size: 20px;
             overflow: hidden;
             background-color: #00A3FF;
             color: #FFFFFF;
-            text-align: center;
-
         }
+
       `}</style>
 
       
