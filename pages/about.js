@@ -16,14 +16,15 @@ export default function Home() {
       <Header/>
       <main>
         <h1>About Us</h1>
-        <p>NeoLinkID is a project set up to improve the safety of birth certificates.</p><br></br>
+        <div className="body">
+        <p>NeoLinkID is a project set up to ensure every child has the right to birth registration.</p><br></br>
+        </div>
 
-        <h1>Help</h1>
-        <p>Please refer to our tutorial for help.</p>
+        
 
         <div className="grid">
           <Link href="/">
-            <div className="cardCancel">
+            <div className="cardFinish">
             <h3>Home</h3>
             </div>
           </Link>
@@ -41,22 +42,22 @@ export default function Home() {
           align-items: center;
         }
 
-        h1{
-          line-height: 0;
-
+        .body{
+            padding: 0rem 2rem;
         }
+
+        .subtitle{
+          line-height: 1;
+          margin-bottom: 0.2rem;
+        }
+
         p {
           color: rgba(0,163,255,0.7);
-          line-height: 1;
-          text-align: center;
-        }
-
-        h3{
-            text-align: center;
-            justify-content: center;
+          margin-top: 0rem;
         }
 
         main {
+          padding: 5rem 0;
           flex: 1;
           display: flex;
           flex-direction: column;
@@ -73,133 +74,73 @@ export default function Home() {
           align-items: center;
         }
 
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 3rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
         .grid {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-wrap: wrap;
-  
-            max-width: 800px;
-            margin-top: 2rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-wrap: wrap;
+
+          max-width: 800px;
+          margin-top: 0rem;
         }
 
         .card {
-            margin: 0.1rem;
-            flex-basis: 45%;
-            padding: 1rem;
-            text-align: center;
-            color: inherit;
-            text-decoration: none;
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            transition: color 0.15s ease, border-color 0.15s ease;
-            background-color: #00A3FF;
-            color: white;
-          }
-  
-          .cardCancel {
-              margin: 1rem;
-              flex-basis: 45%;
-              padding: 1rem;
-              text-align: center;
-              color: inherit;
-              text-decoration: none;
-              border: 1px solid #00A3FF;
-              border-radius: 10px;
-              transition: color 0.15s ease, border-color 0.15s ease;
-            }
-          
-          .cardCancel:hover,
-          .cardCancel:focus,
-          .cardCancel:active {
-            color: #0016DD;
-            border-color: #0016DD;
-          }
-  
-          .cardCancel h3 {
-              margin: 0 0 0rem 0;
-              font-size: 1.0rem;
-              line-height: 12re;
-            }
-  
-            .cardCancel p {
-              margin: 0 0 0rem 0;
-              font-size: 1.0rem;
-              color: #00A3FF;
-            }
-  
-  
-          .card:hover,
-          .card:focus,
-          .card:active {
-            color: #0070f3;
-            border-color: #0070f3;
-          }
-  
-          .card h3 {
-            margin: 0 0 0rem 0;
-            font-size: 1.5rem;
-          }
-  
-          .card p {
-            margin: 0;
-            font-size: 1.25rem;
-            line-height: 1.5;
-          }
-        .logo {
-          height: 1em;
+          margin: 0.1rem;
+          flex-basis: 45%;
+          padding: 1rem;
+          text-align: center;
+          color: inherit;
+          text-decoration: none;
+          border: 1px solid #eaeaea;
+          border-radius: 10px;
+          transition: color 0.15s ease, border-color 0.15s ease;
+          background-color: white;
+          color: black;
         }
+
+        .cardFinish {
+          margin-top: 6rem;
+          width: 60%;
+          flex-basis: 45%;
+          padding: 0.5rem;
+          text-align: center;
+          color: inherit;
+          text-decoration: none;
+          border: 1px solid #00A3FF;
+          border-radius: 10px;
+          transition: color 0.15s ease, border-color 0.15s ease;
+          }
+
+        .card:hover,
+        .card:focus,
+        .card:active {
+          color: #0070f3;
+          border-color: #0070f3;
+        }
+
+        .cardFinish:hover,
+        .cardFinish:focus,
+        .cardFinish:active {
+          color: #0016DD;
+          border-color: #0016DD;
+        }
+
+        .card h3 {
+          margin: 0 0 0rem 0;
+          font-size: 1.2rem;
+        }
+
+        .cardFinish h3 {
+            margin: 0 0 0rem 0;
+            font-size: 1.2rem;
+          }
+
+        .card p {
+          margin: 0;
+          font-size: 1.25rem;
+          line-height: 1.5;
+        }
+
 
         @media (max-width: 600px) {
           .grid {
@@ -207,7 +148,6 @@ export default function Home() {
             flex-direction: column;
           }
         }
-      
       `}</style>
 
       <style jsx global>{`
@@ -230,7 +170,6 @@ export default function Home() {
         * {
           box-sizing: border-box;
         }
-      
       `}</style>
     </div>
   )

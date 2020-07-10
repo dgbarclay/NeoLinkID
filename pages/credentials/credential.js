@@ -106,41 +106,6 @@ class Credential extends Component {
           align-items: center;
         }
 
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
         .title {
           margin: 0;
           line-height: 1.15;
@@ -148,15 +113,7 @@ class Credential extends Component {
           text-align: center;
         }
 
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
+        
 
         code {
           background: #fafafa;
@@ -169,26 +126,6 @@ class Credential extends Component {
 
         .specialTitle{
             padding-bottom: 0rem;
-        }
-
-        .buttons { 
-            width: 60%;
-            max-width: 300px;
-            table-layout: fixed;
-            border-collapse: collapse;
-            margin: 0.3rem;
-            flex-basis: 45%;
-            padding: 1rem;
-            text-align: center;
-            color: inherit;
-            text-decoration: none;
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            transition: color 0.15s ease, border-color 0.15s ease;
-             
-        }
-        .buttons button { 
-          width: 100%;
         }
 
         .grid {
@@ -232,14 +169,7 @@ class Credential extends Component {
           line-height: 1.5;
         }
 
-        .logo {
-          height: 1em;
-        }
-
-        .newTitle {
-            padding-top: 5rem;
-            padding-bottom: 0rem;
-          }
+        
 
         @media (max-width: 600px) {
           .grid {

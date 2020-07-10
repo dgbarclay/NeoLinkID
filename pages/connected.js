@@ -20,7 +20,7 @@ function Home({jsonArray, failed}) {
       <Header/>
 
       <main>
-        {!failed && <h1>Issue Credential</h1> }
+        {!failed && <h1 className="subtitle">Issue Credential</h1> }
         {!failed && <p>Select an option below to begin.</p> }
 
         {failed && <h2>Server currently offline.</h2> }
@@ -47,10 +47,11 @@ function Home({jsonArray, failed}) {
           align-items: center;
         }
 
-        h1{
+        .subtitle{
           line-height: 1;
           margin-bottom: 0.2rem;
         }
+
         p {
           color: rgba(0,163,255,0.7);
           margin-top: 0rem;
@@ -72,81 +73,6 @@ function Home({jsonArray, failed}) {
           display: flex;
           justify-content: center;
           align-items: center;
-        }
-
-        footer img {
-          margin-left: 0.5rem;
-        }
-
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-
-        a {
-          color: inherit;
-          text-decoration: none;
-        }
-
-        .title a {
-          color: #0070f3;
-          text-decoration: none;
-        }
-
-        .title a:hover,
-        .title a:focus,
-        .title a:active {
-          text-decoration: underline;
-        }
-
-        .title {
-          margin: 0;
-          line-height: 1.15;
-          font-size: 3rem;
-        }
-
-        .title,
-        .description {
-          text-align: center;
-        }
-
-        .description {
-          line-height: 1.5;
-          font-size: 1.5rem;
-        }
-
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-
-        .specialTitle{
-            padding-bottom: 0rem;
-        }
-
-        .buttons { 
-            width: 60%;
-            max-width: 300px;
-            table-layout: fixed;
-            border-collapse: collapse;
-            margin: 0.3rem;
-            flex-basis: 45%;
-            padding: 1rem;
-            text-align: center;
-            color: inherit;
-            text-decoration: none;
-            border: 1px solid #eaeaea;
-            border-radius: 10px;
-            transition: color 0.15s ease, border-color 0.15s ease;  
-        }
-
-        .buttons button { 
-          width: 100%;
         }
 
         .grid {
@@ -216,14 +142,6 @@ function Home({jsonArray, failed}) {
           line-height: 1.5;
         }
 
-        .logo {
-          height: 1em;
-        }
-
-        .newTitle {
-            padding-top: 5rem;
-            padding-bottom: 0rem;
-          }
 
         @media (max-width: 600px) {
           .grid {

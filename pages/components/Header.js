@@ -86,7 +86,6 @@ export default class Header extends React.Component{
             margin-left:0.2rem;
             margin-top: 0.8rem;
             float: left;
-            // vertical-align: middle;
         }
 
         .about{
@@ -96,7 +95,6 @@ export default class Header extends React.Component{
             margin-right:0.2rem;
             margin-top: 0.8rem;
             float: right;
-            // vertical-align: middle
         }
 
         .full-width{

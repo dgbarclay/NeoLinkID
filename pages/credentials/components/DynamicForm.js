@@ -22,21 +22,18 @@ export default class DynamicForm extends React.Component{
           let sessionTemp = Cookie.get('session');
           if (sessionTemp){
             obj = JSON.parse(sessionTemp);
-            value = obj[key];
-            console.log(value);
           }
         }
         var keyArray = [];
 
         for (var key in obj){
+          console.log("constructing");
             var value = obj[key];
+            console.log(value);
             this.state[key] = value
         }
 
     }
-
-
-    
 
     mySubmitHandler = (event) => {
         event.preventDefault();
@@ -59,10 +56,6 @@ export default class DynamicForm extends React.Component{
           obj = JSON.parse(autofill);
           this.edit = true;
         }
-        // else{
-        //   autofill = Cookie.get('session');
-        //   obj = JSON.parse(autofill);
-        // }
   
         var labelArray = [];
 
@@ -159,6 +152,33 @@ export default class DynamicForm extends React.Component{
                 </div>
               );
             }
+            else if (type == "number"){
+              let val = m.values;
+              return(
+                <div key={key} className="row">
+                  <div className="col-25">
+                    <label className="form-label"
+                    key={"l" + m.key}
+                    htmlFor={m.key}>
+                        {displayLabel}
+                    </label>
+                  </div>
+                  <div className="col-75">
+                  <input {...props}
+                      ref={(key)=>{this[m.key]=key}}
+                      className = "form-input"
+                      type="text"
+                      key={"i" + m.key}
+                      onChange={(e)=>{this.onChange(e, key)}}
+                      value={value}
+                      placeholder={label}
+                      pattern="\d*"
+                      maxLength="8"
+                      />
+                    </div>
+                </div>
+              );
+            }
             else{
               return(
                   <div key={key} className="row">
@@ -188,7 +208,6 @@ export default class DynamicForm extends React.Component{
         if (this.counter == 1){
           Cookie.set('credentialLabel',labelArray)
           Cookie.set('data', '');
-          // Cookie.set('session', '');
         }
         
         return formUI;
