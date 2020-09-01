@@ -8,7 +8,7 @@ import Cookie from 'js-cookie';
 
 class Success extends Component {
 
-  onComponentDidMount = () =>{
+  componentDidMount() {
     Cookie.set('data', '');
   }
 
