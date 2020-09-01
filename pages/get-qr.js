@@ -13,6 +13,7 @@ Modal.setAppElement("#__next");
 
 
 function Home({connectionID, QRCode, failed}) {
+  
   Cookie.set("connectionID", connectionID);
   const router = useRouter(); 
   return (

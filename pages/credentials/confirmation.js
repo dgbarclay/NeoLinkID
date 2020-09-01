@@ -69,6 +69,7 @@ class Confirmation extends Component {
         console.log(model);
         const obj = model;
         var labelArray = []
+        
         try{
         labelArray = JSON.parse(Cookie.get('credentialLabel'));
         }

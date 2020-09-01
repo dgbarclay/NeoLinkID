@@ -3,9 +3,14 @@ import Link from 'next/link';
 import { withRouter } from 'next/router';
 import React, { Component } from "react";
 import Header from "../components/Header";
+import Cookie from 'js-cookie';
 
 
 class Success extends Component {
+
+  onComponentDidMount = () =>{
+    Cookie.set('data', '');
+  }
 
     render(){
   return (

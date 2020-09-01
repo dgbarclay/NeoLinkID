@@ -169,8 +169,6 @@ class Credential extends Component {
           line-height: 1.5;
         }
 
-        
-
         @media (max-width: 600px) {
           .grid {
             width: 100%;
